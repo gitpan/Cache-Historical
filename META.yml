@@ -1,12 +1,12 @@
 --- #YAML:1.0
 name:                Cache-Historical
-version:             0.01
+version:             0.02
 abstract:            Cache historical values
 license:             ~
 generated_by:        ExtUtils::MakeMaker version 6.31
 distribution_type:   module
 requires:     
-    DBD::SQLite:                   1.13
+    DBD::SQLite:                   1.14
     DBI:                           0
     Log::Log4perl:                 1
     Rose::DB:                      0.735

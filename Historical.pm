@@ -10,7 +10,7 @@ use Log::Log4perl qw(:easy);
 use DBI;
 use DateTime::Format::Strptime;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 ###########################################
 sub new {
@@ -171,7 +171,7 @@ sub since_last_update {
 ###########################################
     my($self, $key) = @_;
 
-    my $date = $self->last_update();
+    my $date = $self->last_update($key);
 
     if(defined $date) {
         return DateTime->now() - $date;
