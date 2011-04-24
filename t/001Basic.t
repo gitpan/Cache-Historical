@@ -17,8 +17,9 @@ my $c = Cache::Historical->new(
 my $fmt = DateTime::Format::Strptime->new(
               pattern => "%Y-%m-%d");
 
-$c->set( $fmt->parse_datetime("2008-01-02"), "msft", 35.22 );
 $c->set( $fmt->parse_datetime("2008-01-03"), "msft", 35.37 );
+$c->set( $fmt->parse_datetime("2008-01-02"), "msft", 35.22 );
+sleep 1; # so the update time is never the same for all the rows
 $c->set( $fmt->parse_datetime("2008-01-04"), "msft", 34.38 );
 $c->set( $fmt->parse_datetime("2008-01-07"), "msft", 34.61 );
 
@@ -30,8 +31,11 @@ is( $c->get( $fmt->parse_datetime("2008-01-05"), "msft"), undef,
     "get undef value" );
 
 my($from, $to) = $c->time_range( "msft" );
-is($from, "2008-01-02T00:00:00", "time range from");
-is($to,   "2008-01-07T00:00:00", "time range to");
+
+use Data::HexDump;
+
+is("$from", "2008-01-02T00:00:00", "time range from");
+is("$to",   "2008-01-07T00:00:00", "time range to");
 
 # interpolated
 is( $c->get_interpolated( $fmt->parse_datetime("2008-01-06"), "msft"), 34.38, 
