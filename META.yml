@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Cache-Historical
-version:            0.04
+version:            0.05
 abstract:           Cache historical values
 author:
     - Mike Schilli <cpan@perlmeister.com>
